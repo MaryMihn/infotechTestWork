@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Icons from "@/components/Icons";
+import  SoundPlayer  from "../../components/Sound"
 
 export default function VS() {
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function VS() {
       <div>
         <div className="flex gap-0.5 ">
           <Icons />
+          <SoundPlayer />
         </div>
       </div>
     </main>
