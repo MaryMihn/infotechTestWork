@@ -79,8 +79,10 @@ const HeroesCards = () => {
     } else if (e.key === "Enter") {
       if (selectedFighterIndexPlayer2 === -1) {
         setSelectedFighterIndexPlayer2(selectedFighterIndexPlayer1 + 1);
-        chooseHero(selectedFighterIndexPlayer1);
+        chooseHero(selectedFighterIndexPlayer1+1);
+        setAnimateGreenBorder(false);
       } else if (selectedFighterIndexPlayer1 !== selectedFighterIndexPlayer2) {
+        setAnimateRedBorder(false)
         setTimeout(() => {
           router.push("/vs");
         }, 2000);
@@ -95,16 +97,23 @@ const HeroesCards = () => {
     };
   }, [selectedFighterIndexPlayer1, selectedFighterIndexPlayer2]);
 
+  const [animateGreenBorder, setAnimateGreenBorder] = useState(true);
+  const [animateRedBorder, setAnimateRedBorder] = useState(true);
+
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid grid-cols-5 gap-1 ">
       {heroes.map((fighter, index) => (
         <div
-          key={index}
-          className={`border p-4 cursor-pointer ${
+          key={fighter.id}
+        className={`border p-4 cursor-pointer ${
             index === selectedFighterIndexPlayer1
-              ? "border-green-500"
+              ? `border-green-500 border-8  ${
+                  animateGreenBorder ? "animate-bounce" : "animate-none"
+                }`
               : index === selectedFighterIndexPlayer2
-              ? "border-red-500"
+              ? `border-red-500 border-8 ${
+                  animateRedBorder ? "animate-bounce" : "animate-none"
+                }`
               : "border-transparent"
           }`}
         >
@@ -114,7 +123,6 @@ const HeroesCards = () => {
             width={100}
             height={100}
           />
-          {fighter.title}
         </div>
       ))}
     </div>
