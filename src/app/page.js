@@ -1,23 +1,20 @@
-"use client"
-import Image from "next/image";
-
+"use client";
 import HeroesCards from "@/components/HeroesCards";
-import { useState } from "react";
+import { useContext } from "react";
+import { HeroContext } from "../context/heroContext";
 
 export default function Home() {
-
-  const [hero, setHero]= useState()
-  const [enemy, setEnemy]= useState()
+  const { hero } = useContext(HeroContext);
 
   return (
-    <main className=" h-screen flex flex-col justify-around items-center max-h-full" >
-      <div className="uppercase text-5xl font-mono italic" >
-Select {hero ? "your" : "enemy"} fighter
+    <main className=" h-screen flex flex-col justify-around items-center max-h-full">
+      <div className="uppercase text-5xl font-mono italic">
+        Select {hero ? "enemy" : "your"} fighter
       </div>
-<HeroesCards/>
-<div className="uppercase text-2xl font-mono italic">
-KOMBAT ZONE: SOUL CHAMBER
-</div>
+      <HeroesCards />
+      <div className="uppercase text-2xl font-mono italic">
+        KOMBAT ZONE: SOUL CHAMBER
+      </div>
     </main>
   );
 }
