@@ -15,25 +15,34 @@ export default function Home() {
       <div className="uppercase text-5xl ">
         Select {hero ? "enemy" : "your"} fighter
       </div>
-      <div className="  flex  ">
-        <Image
-          alt="left"
-          src="/pictures/left.png"
-          width={300}
-          height={300}
-          className={`${hero ? `animate-none` : `animate-bounce`}`}
-        />
+
+      <div className="flex justify-around items-end">
+        <div className="lg:w-56 w-1/4">
+          <Image
+            alt="left"
+            src="/pictures/left.png"
+            width={300}
+            height={300}
+            className={`${
+              hero ? `animate-none` : `animate-bounce`
+            } w-full h-300`}
+          />
+        </div>
+
         <HeroesCards />
 
-        <Image
-          alt="right"
-          src="/pictures/right.png"
-          width={300}
-          height={300}
-          className={`${hero && !enemy ? "animate-bounce" : "animate-none"}`}
-        />
+        <div className="lg:w-56 w-1/4 items-end">
+          <Image
+            alt="right"
+            src="/pictures/right.png"
+            width={100}
+            height={500}
+            className={`${
+              hero && !enemy ? "animate-bounce" : "animate-none"
+            } w-full h-500`}
+          />
+        </div>
       </div>
-
       <div className="uppercase text-2xl ">KOMBAT ZONE: SOUL CHAMBER</div>
     </main>
   );

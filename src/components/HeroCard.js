@@ -14,7 +14,7 @@ const HeroCard = ({
   return (
     <div
       key={fighter.id}
-      className={`border p-4 cursor-pointer  ${
+      className={`border p-4 cursor-pointer relative lg:w-32 lg:h-36 ${
         index === selectedFighterIndexPlayer1
           ? `border-green-500 border-8  ${
               !hero ? "animate-bounce" : "animate-none"
@@ -26,7 +26,7 @@ const HeroCard = ({
           : "border-2 border-gray-700 "
       }`}
     >
-      <Image alt={fighter.title} src={fighter.img} width={100} height={100} />
+      <Image alt={fighter.title} src={fighter.img} fill  />
     </div>
   );
 };
