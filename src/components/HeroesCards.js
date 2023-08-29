@@ -102,6 +102,7 @@ const HeroesCards = () => {
     <div className="grid grid-cols-5 gap-1 ">
       {heroes.map((fighter, index) => (
         <HeroCard
+        key={index}
           fighter={fighter}
           index={index}
           selectedFighterIndexPlayer2={selectedFighterIndexPlayer2}
