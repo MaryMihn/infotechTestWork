@@ -11,7 +11,13 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
-          "my_bg_image": "url(/pictures/bg.png)",
+        my_bg_image: "url(/pictures/bg.png)",
+      },
+      fontFamily: {
+        mortalKombat: [
+          '"Mortal Kombat"',
+          'url("https://fonts.cdnfonts.com/css/mortal-kombat")',
+        ],
       },
     },
   },

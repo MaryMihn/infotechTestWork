@@ -11,8 +11,8 @@ export default function Home() {
   const { enemy } = useContext(EnemyContext);
 
   return (
-    <main className=" h-screen flex flex-col justify-around items-center  bg-gray-600">
-      <div className="uppercase text-5xl font-mono italic">
+    <main className=" h-screen flex flex-col justify-around items-center  bg-gray-600 font-['mortalKombat'] italic">
+      <div className="uppercase text-5xl ">
         Select {hero ? "enemy" : "your"} fighter
       </div>
       <div className="  flex  ">
@@ -34,9 +34,7 @@ export default function Home() {
         />
       </div>
 
-      <div className="uppercase text-2xl font-mono italic">
-        KOMBAT ZONE: SOUL CHAMBER
-      </div>
+      <div className="uppercase text-2xl ">KOMBAT ZONE: SOUL CHAMBER</div>
     </main>
   );
 }
