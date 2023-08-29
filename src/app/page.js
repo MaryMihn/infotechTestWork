@@ -3,12 +3,15 @@ import HeroesCards from "@/components/HeroesCards";
 import { useContext } from "react";
 import { HeroContext } from "../context/heroContext";
 import Image from "next/image";
+import { EnemyContext } from "../context/enemyContext";
 
 export default function Home() {
   const { hero } = useContext(HeroContext);
 
+  const { enemy } = useContext(EnemyContext);
+
   return (
-    <main className=" h-screen flex flex-col justify-around items-center max-h-full bg-gray-600">
+    <main className=" h-screen flex flex-col justify-around items-center  bg-gray-600">
       <div className="uppercase text-5xl font-mono italic">
         Select {hero ? "enemy" : "your"} fighter
       </div>
@@ -27,7 +30,7 @@ export default function Home() {
           src="/pictures/right.png"
           width={300}
           height={300}
-          className={`${hero ? "animate-bounce" : "animate-none"}`}
+          className={`${hero && !enemy ? "animate-bounce" : "animate-none"}`}
         />
       </div>
 

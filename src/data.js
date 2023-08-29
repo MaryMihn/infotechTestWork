@@ -1,6 +1,6 @@
 
   
-const heroes = [
+export const  heroes = [
     {
       id: 1,
       title: "jade",
@@ -76,4 +76,15 @@ const heroes = [
         img: "/subZero.png",
       },
   ];
-  export default heroes
+
+
+  export const images = [
+    "/pictures/icon.png",
+    "/pictures/13.png",
+    "/pictures/11.png",
+    "/pictures/09.png",
+    "/pictures/08.png",
+    "/pictures/07.png",
+  ];
+
+  export const  buttons = ["q", "w", "e", "r", "t", "y"];

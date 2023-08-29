@@ -1,12 +1,16 @@
 import Image from "next/image";
-import heroes from "../data";
+import {heroes} from "../data";
 
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { HeroContext } from "../context/heroContext";
+import { EnemyContext } from "@/context/enemyContext";
+import HeroCard from "./HeroCard";
 
 const HeroesCards = () => {
   const { chooseHero } = useContext(HeroContext);
+  const { chooseEnemy } = useContext(EnemyContext);
+  const router = useRouter();
 
   const rows = 3;
   const columns = 5;
@@ -16,8 +20,6 @@ const HeroesCards = () => {
     useState(0);
   const [selectedFighterIndexPlayer2, setSelectedFighterIndexPlayer2] =
     useState(-1);
-
-  const router = useRouter();
 
   const handleKeyPress = (e) => {
     if (e.key === "ArrowUp") {
@@ -79,10 +81,9 @@ const HeroesCards = () => {
     } else if (e.key === "Enter") {
       if (selectedFighterIndexPlayer2 === -1) {
         setSelectedFighterIndexPlayer2(selectedFighterIndexPlayer1 + 1);
-        chooseHero(selectedFighterIndexPlayer1+1);
-        setAnimateGreenBorder(false);
+        chooseHero(selectedFighterIndexPlayer1 + 1);
       } else if (selectedFighterIndexPlayer1 !== selectedFighterIndexPlayer2) {
-        setAnimateRedBorder(false)
+        chooseEnemy(selectedFighterIndexPlayer2 + 1);
         setTimeout(() => {
           router.push("/vs");
         }, 2000);
@@ -97,33 +98,15 @@ const HeroesCards = () => {
     };
   }, [selectedFighterIndexPlayer1, selectedFighterIndexPlayer2]);
 
-  const [animateGreenBorder, setAnimateGreenBorder] = useState(true);
-  const [animateRedBorder, setAnimateRedBorder] = useState(true);
-
   return (
     <div className="grid grid-cols-5 gap-1 ">
       {heroes.map((fighter, index) => (
-        <div
-          key={fighter.id}
-        className={`border p-4 cursor-pointer ${
-            index === selectedFighterIndexPlayer1
-              ? `border-green-500 border-8  ${
-                  animateGreenBorder ? "animate-bounce" : "animate-none"
-                }`
-              : index === selectedFighterIndexPlayer2
-              ? `border-red-500 border-8 ${
-                  animateRedBorder ? "animate-bounce" : "animate-none"
-                }`
-              : "border-transparent"
-          }`}
-        >
-          <Image
-            alt={fighter.title}
-            src={fighter.img}
-            width={100}
-            height={100}
-          />
-        </div>
+        <HeroCard
+          fighter={fighter}
+          index={index}
+          selectedFighterIndexPlayer2={selectedFighterIndexPlayer2}
+          selectedFighterIndexPlayer1={selectedFighterIndexPlayer1}
+        />
       ))}
     </div>
   );
